@@ -1,8 +1,8 @@
 BACKGROUND: Analyzing RNA-seq count data from the airway dataset, which contains airway smooth muscle cell samples that were:
 
--treated with dexamethasone (a corticosteroid drug), and
+1. treated with dexamethasone (a corticosteroid drug), and
 
--untreated (control samples).
+2. untreated (control samples).
 
 OBJECTIVE: Identify which genes show significant differences in expression between treated and untreated samples. (i.e. Which genes are up-regulated (more highly expressed after dexamethasone)? Which genes are down-regulated (less expressed after dexamethasone)?
 
@@ -28,13 +28,13 @@ ENSG00000273486  15.45244       0.113322  0.426034  0.265993 0.7902447  0.930696
 ENSG00000273487   8.16327      -1.017799  0.575797 -1.767635 0.0771219  0.271628
 ENSG00000273488   8.58437      -0.218104  0.570714 -0.382159 0.7023435  0.896552
 
-# note that the first column are the genes (i.e. ENSG00000000003 , etc.)
-# baseMean : average of the nomalized counts taken over all the samples
-# log2FoldChange : fold change of the corresponding gene in the treated condition compared to the untreated condition (positive are upregulated genes in treated condition and negative are downregulated genes in treated condition)
-# lfcSE : standard error estimates for the log2FoldChange
-# stat : Wald test values for the genes
-# pvalue : p-value of the test statistic for the gene
-# padj : adjusted p-value; corrected p-value for multiple testing
+-note that the first column are the genes (i.e. ENSG00000000003 , etc.)
+-baseMean : average of the nomalized counts taken over all the samples
+-log2FoldChange : fold change of the corresponding gene in the treated condition compared to the untreated condition (positive are upregulated genes in treated condition and negative are downregulated genes in treated condition)
+-lfcSE : standard error estimates for the log2FoldChange
+-stat : Wald test values for the genes
+-pvalue : p-value of the test statistic for the gene
+-padj : adjusted p-value; corrected p-value for multiple testing
 
 >> summary(res)
 
@@ -47,4 +47,4 @@ low counts [2]     : 3903, 17%             # how many have low counts
 (mean count < 4)
 
 
-# MA pot: scatter plot of log2FoldChange vs the mean of the normalized counts. Shows us the genes that are differentially expressed. Genes with blue points are signficantly differentially expressed genes and have adjusted p-values of less than 0.05. The small triangles towards the end of the plot indicate have higher fold changes and the direction of the triangle is the direction of the fold change...In our plot, we are hopinh we get dots on the upperright and bottomright quadarant of the plot which would means these genes would have high mean of normalized counts and high logFold changes which would be candidates to be further looked into.
+-MA plot: scatter plot of log2FoldChange vs the mean of the normalized counts. Shows us the genes that are differentially expressed. Genes with blue points are signficantly differentially expressed genes and have adjusted p-values of less than 0.05. The small triangles towards the end of the plot indicate have higher fold changes and the direction of the triangle is the direction of the fold change...In our plot, we are hoping we get dots on the upper-right and bottom-right quadarant of the plot which would means these genes would have high mean of normalized counts and high logFold changes which would be candidates to be further looked into.
