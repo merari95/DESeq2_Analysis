@@ -21,3 +21,9 @@ all(colnames(counts_data)%in% rownames(colData))
 #are they in the same order?
 
 all(colnames(counts_data) == rownames(colData))
+
+#Step 2: construct a DESeqDataSet object
+
+DESeqDataSetFromMatrix(counts = counts_data,
+                       colData = colData,
+                       design - ~Dexamethasone)
