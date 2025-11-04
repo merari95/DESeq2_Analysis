@@ -44,3 +44,30 @@ dds$dexamthasone <- relevel(dds$dexamethasone, ref = "untreated") #untreated is 
 # Step 3: Run DESeq function on DESeq object
 
 dds <- DESeq(dds)
+res <- results(dds)
+
+res
+
+
+
+# Explore Results -------
+
+summary(res)
+
+#change p-value to less than 0.01, so results will change accordingly
+res0.01 <- results(dds, alpha = 0.01)
+summary(res0.01)
+
+#contrasts 
+resultsNames(dds)
+
+# e.g.: treated_4hr, treated_8hrs, untreated   # let's say that these were our conditions,
+                                               # then to get the results we would have to 
+ 
+                                              # do the following...
+#results(dds, contrast = c("dexamethasone", "treated_4hrs", "untreated")) #compare treatment level (treated_4hrs) vs reference level (untreated)
+
+
+
+# MA plot 
+plotMA(res)
