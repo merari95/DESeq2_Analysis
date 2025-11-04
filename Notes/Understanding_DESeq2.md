@@ -1,6 +1,17 @@
+BACKGROUND: Analyzing RNA-seq count data from the airway dataset, which contains airway smooth muscle cell samples that were:
+
+-treated with dexamethasone (a corticosteroid drug), and
+
+-untreated (control samples).
+
+OBJECTIVE: Identify which genes show significant differences in expression between treated and untreated samples. (i.e. Which genes are up-regulated (more highly expressed after dexamethasone)? Which genes are down-regulated (less expressed after dexamethasone)?
+
+DATA: is retrieved from Bioconductor package
 
 
+runDESeq2.R script-  
 >> res
+
 log2 fold change (MLE): dexamethasone untreated vs treated 
 Wald test p-value: dexamethasone untreated vs treated                                #used the Wald test
 DataFrame with 22369 rows and 6 columns
@@ -27,11 +38,13 @@ ENSG00000273488   8.58437      -0.218104  0.570714 -0.382159 0.7023435  0.896552
 
 >> summary(res)
 
-
 out of 22369 with nonzero total read count
 adjusted p-value < 0.1
 LFC > 0 (up)       : 1502, 6.7%            # this is the number of upregulated genes
 LFC < 0 (down)     : 1884, 8.4%            # this is the number of downregulated genes
-outliers [1]       : 51, 0.23%
-low counts [2]     : 3903, 17%
+outliers [1]       : 51, 0.23%             # how many are outliers
+low counts [2]     : 3903, 17%             # how many have low counts
 (mean count < 4)
+
+
+# MA pot: scatter plot of log2FoldChange vs the mean of the normalized counts. Shows us the genes that are differentially expressed. Genes with blue points are signficantly differentially expressed genes and have adjusted p-values of less than 0.05. The small triangles towards the end of the plot indicate have higher fold changes and the direction of the triangle is the direction of the fold change...In our plot, we are hopinh we get dots on the upperright and bottomright quadarant of the plot which would means these genes would have high mean of normalized counts and high logFold changes which would be candidates to be further looked into.
